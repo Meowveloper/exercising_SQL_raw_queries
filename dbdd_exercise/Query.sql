@@ -105,4 +105,33 @@ FROM course c, student s
 WHERE c.course_id=s.course_id
 AND c.course_name='History';
 
+-- Select all the data for students over the age of 21
+SELECT *
+FROM student
+WHERE age>21;
 
+
+-- Select the first name, last name and age for students who are twenty one or over
+SELECT first_name AS 'First Name', last_name AS 'Last Name', age AS 'Age'
+FROM student
+WHERE age>=21;
+
+-- Select the first name, last name, course id and course name for students who are not studying Computing Science
+SELECT s.first_name AS 'First Name', s.last_name AS 'Last Name', c.course_name AS 'Course Name'
+FROM student s, course c
+WHERE s.course_id=c.course_id
+AND c.course_name <> 'Computing Science';
+
+-- Select all the details for the students under 30 who are studying computer science
+SELECT s.*
+FROM student s, course c
+WHERE s.course_id=c.course_id
+AND s.age<30
+AND c.course_name<> 'Computing Science';
+
+-- Show the first names for students studying Computing Science who are not Home Students
+SELECT s.first_name AS 'First Name of the Student'
+FROM student s, course c
+WHERE s.course_id=c.course_id
+AND c.course_name = 'Computing Science'
+AND s.student_type <> 'Home Student';
